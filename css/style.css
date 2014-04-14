@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  padding: 0; }
+
+#editor ul#buttons {
+  margin: 0;
+  list-style: none;
+  background: #9b9b9b; }
+  #editor ul#buttons li {
+    display: inline-block;
+    padding: 7px 10px; }
+    #editor ul#buttons li:hover {
+      cursor: pointer;
+      background: #dbdbdb; }
+
+#hidden-elements {
+  display: none; }
+
+input {
+  box-shadow: none;
+  border: none; }
+  input:active, input:hover {
+    border: 1px solid #2750ff; }
+
+input:placeholder {
+  color: #333333; }
