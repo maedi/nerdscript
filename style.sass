@@ -1,8 +1,16 @@
 body
   margin: 0
   padding: 0
+  height: 100%
+  
+html,
+#editor,
+#canvas
+  height: 100%
 
 #editor
+  width: 40%
+  float: left
   ul#buttons
     margin: 0
     list-style: none
@@ -13,19 +21,30 @@ body
       &:hover
         cursor: pointer
         background: #dbdbdb
+  #canvas
+    &:hover
+      cursor: text
+
+#preview
+  overflow: auto
+  background: #222
+  height: 100%
 
 #hidden-elements
   display: none
   
 input
   display: block
+  width: 100%
+  font-size: 15px
   box-shadow: none
   border: none
-  &:active, &:hover
-    border-bottom: 1px solid #2750ff
 
-input:placeholder
-  color: #333
+  &:focus
+    outline: 0
+
+  &:placeholder
+    color: #999 !important
   
   
 // Objects

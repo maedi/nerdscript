@@ -21,12 +21,14 @@ if @File && @FileReader && @FileList && @Blob
     canvas = $('#canvas')
     editor_buttons = $('ul#editor')
     @console.log editor_buttons
-  
-    dom_object = $('#dom-object')
-    
+
+
     $('#add_object').click =>
-      @console.log 'kjhg'
-      $('#canvas').append(dom_object)
+      $('#canvas').append($('#dom-object'))
+            
+    $('#canvas').click =>
+      $('#add_object').click()
+    
     
     object = new Object({})
     object.actions = new Action()
