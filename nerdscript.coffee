@@ -17,20 +17,28 @@ if @File && @FileReader && @FileList && @Blob
   @NerdScript = {objects: [], changes: []}
   
 
-  $(document).ready =>  
+  $(document).ready =>
+  
+    # CONFIG
+    
     canvas = $('#canvas')
     editor_buttons = $('ul#editor')
-    @console.log editor_buttons
 
+    # BEHAVIORS
 
-    $('#add_object').click =>
+    $('#new_object').on 'click', (event) =>
+      dom = $(event.target)
+      
       $('#canvas').append($('#dom-object'))
+
+      new_object = new Object({})
+      new_object.actions = new Action()
+      
+      @NerdScript.objects.push new Object({})
+
+      @console.log @NerdScript.objects
+      @console.log dom
+         
             
     $('#canvas').click =>
-      $('#add_object').click()
-    
-    
-    object = new Object({})
-    object.actions = new Action()
-    @console.log object
-    @console.log object.actions
+      $('#new_object').click()
