@@ -17,10 +17,17 @@ body {
   display: none; }
 
 input {
+  display: block;
   box-shadow: none;
   border: none; }
   input:active, input:hover {
-    border: 1px solid #2750ff; }
+    border-bottom: 1px solid #2750ff; }
 
 input:placeholder {
   color: #333333; }
+
+#dom-object {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px #cccccc; }

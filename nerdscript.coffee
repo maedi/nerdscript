@@ -8,9 +8,14 @@ class Action
   constructor: ->
     @params = []
 
+class Change
+  constructor: ->
+    @object = {}
+    
 if @File && @FileReader && @FileList && @Blob
 
-  @NerdScript = {objects: []}
+  @NerdScript = {objects: [], changes: []}
+  
 
   $(document).ready =>  
     canvas = $('#canvas')
@@ -19,7 +24,7 @@ if @File && @FileReader && @FileList && @Blob
   
     dom_object = $('#dom-object')
     
-    $('#add_object').click () ->
+    $('#add_object').click =>
       @console.log 'kjhg'
       $('#canvas').append(dom_object)
     
