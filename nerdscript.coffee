@@ -110,3 +110,15 @@ if @File && @FileReader && @FileList && @Blob
     $('#canvas').on 'click', (event) =>
       $('#buttons #thing').click() if $(event.target).attr('id') == 'canvas'  
  
+    #link = document.importNode(document.querySelector('link[rel="import"]'), true)
+    #@console.log link
+    #`var template = link.import.querySelector("template")`
+    #@console.log template
+    #clone = document.importNode(link, true)
+    #document.querySelector("#preview").appendChild link
+	
+
+
+
+
+
