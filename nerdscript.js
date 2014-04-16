@@ -72,13 +72,15 @@
         type = false;
       }
       new_dom_object = $('#dom-object').clone();
-      if (parent) {
+      if (parent && parent.hasClass('thing')) {
         new_dom_object.appendTo(parent);
-        $('input', new_dom_object).focus();
-        window.console.log(new_dom_object);
+      } else if (parent) {
+        window.console.log(parent.closest('thing'));
+        new_dom_object.appendTo(parent.closest('.thing'));
       } else {
         new_dom_object.appendTo($('#canvas'));
       }
+      $('input', new_dom_object).focus();
       if (type) {
         new_dom_object.removeClass();
         new_dom_object.addClass('dom-object ' + type);
@@ -96,11 +98,13 @@
         if (event.keyCode === 13) {
           $(this).trigger("enterKey");
         }
+        return false;
       });
       return new_dom_object.on("enterKey", function(event) {
         var parent;
         parent = $(event.target);
-        return NerdScript.ui.new_object(parent);
+        NerdScript.ui.new_object(parent);
+        return false;
       });
     };
 

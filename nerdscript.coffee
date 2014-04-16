@@ -35,12 +35,14 @@ class UI
     new_dom_object = $('#dom-object').clone()
     
     # target dom object
-    if parent
+    if parent and parent.hasClass('thing')
       new_dom_object.appendTo(parent)
-      $('input', new_dom_object).focus()
-      window.console.log new_dom_object
+    else if parent
+      window.console.log parent.closest('thing')
+      new_dom_object.appendTo(parent.closest('.thing'))      
     else
       new_dom_object.appendTo($('#canvas'))
+    $('input', new_dom_object).focus()
 
     # type
     if type
@@ -72,11 +74,12 @@ class UI
     # on enter create new object
     new_dom_object.keyup (event) ->
       $(this).trigger "enterKey" if event.keyCode is 13
-      return
+      false
       
     new_dom_object.on "enterKey", (event) =>
       parent = $(event.target)
       NerdScript.ui.new_object(parent)
+      false
          
 if @File && @FileReader && @FileList && @Blob
 
