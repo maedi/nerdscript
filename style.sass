@@ -7,7 +7,9 @@ body
   margin: 0
   padding: 0
   height: 100%
-  font-family: 'Arial'  
+  font-family: 'Arial'
+  overflow: hidden
+  padding-bottom: 49px
   
 html,
 #editor,
@@ -16,7 +18,6 @@ html,
 
 header
   height: 50px
-  border-bottom: 1px solid #ccc
   background: linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%)
   a,
   a:link,
@@ -41,6 +42,7 @@ header
     padding: 0
     list-style: none
     background: #f6f6f6
+    border-top: 1px solid #bbb
     border-bottom: 1px solid #ddd
     li
       float: left
@@ -56,11 +58,14 @@ header
     &:hover
       cursor: text
 
-#preview
-  overflow: auto
-  background: #222
+textarea#preview,
+.CodeMirror-wrap
+  float: right
   height: 100%
-
+  width: 60%
+  background: #eee
+  border: 1px solid #ccc
+  
 #hidden-elements
   display: none
   

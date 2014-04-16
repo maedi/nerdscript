@@ -11,7 +11,17 @@
 
   <link rel="import" href="example.html">
 
+  <link rel="stylesheet" href="lib/codemirror.css">
+
+  <script src="lib/codemirror.js"></script>
+  <script src="lib/mode/xml/xml.js"></script>
+  <script src="lib/mode/javascript/javascript.js"></script>
+  <script src="lib/mode/css/css.js"></script>
+  <script src="lib/mode/vbscript/vbscript.js"></script>  
+  <script src="lib/mode/htmlmixed/htmlmixed.js"></script>  
+
 </head>
+
 
 <body>
   <script src="jquery.js"></script>
@@ -20,12 +30,13 @@
   <header>
     <img src="images/NerdScript.png"/>
     <a href="http://nerdscript.org">About</a>
+    <a href="http://nerdscript.org">Tutorial</a>
   </header>
   
   <div id="editor">
   
     <ul id="buttons">
-      <li id="thing" class="button">Thing</li>
+      <li id="thing" class="button">Object</li>
       <li id="config" class="button">config</li>
       <li id="action" class="button">action:</li>
       <li id="variable" class="button">variable</li>
@@ -39,9 +50,9 @@
   
   </div>
   
-  <div id="preview">
+  <textarea id="preview">
   
-  </div>
+  </textarea>
 
   <div id="hidden-elements">
 
@@ -51,6 +62,16 @@
     </div>
       
   </div>
+
+  <script>
+  var editor = CodeMirror.fromTextArea(document.getElementById("preview"), {
+    mode: "htmlmixed",
+    styleActiveLine: true,
+    lineNumbers: true,
+    lineWrapping: true
+  });
+  editor.setSize('60%', '100%')
+  </script>
   
 </body>
 </html>
