@@ -59,22 +59,49 @@
   UI = (function() {
 
     function UI() {
-      this.new_object = __bind(this.new_object, this);
+      this.add_event_listeners = __bind(this.add_event_listeners, this);
 
     }
 
-    UI.prototype.new_object = function(dom, type) {
-      var new_dom_object, new_object, object_type;
+    UI.prototype.new_object = function(parent, type) {
+      var new_dom_object, new_object;
+      if (parent == null) {
+        parent = false;
+      }
+      if (type == null) {
+        type = false;
+      }
       new_dom_object = $('#dom-object').clone();
-      new_dom_object.appendTo($('#canvas'));
+      if (parent) {
+        new_dom_object.appendTo(parent);
+        $('input', new_dom_object).focus();
+        window.console.log(new_dom_object);
+      } else {
+        new_dom_object.appendTo($('#canvas'));
+      }
       if (type) {
-        object_type = $('.object-type', new_dom_object);
-        object_type.removeClass();
-        object_type.addClass('object-type ' + type);
+        new_dom_object.removeClass();
+        new_dom_object.addClass('dom-object ' + type);
       }
       new_object = new Object({});
       new_object.actions = new Action();
-      return NerdScript.objects.push(new Object({}));
+      NerdScript.objects.push(new Object({}));
+      new_dom_object.attr('id', 'object-' + NerdScript.objects.length);
+      return this.add_event_listeners(new_dom_object);
+    };
+
+    UI.prototype.add_event_listeners = function(new_dom_object) {
+      var _this = this;
+      new_dom_object.keyup(function(event) {
+        if (event.keyCode === 13) {
+          $(this).trigger("enterKey");
+        }
+      });
+      return new_dom_object.on("enterKey", function(event) {
+        var parent;
+        parent = $(event.target);
+        return NerdScript.ui.new_object(parent);
+      });
     };
 
     return UI;
@@ -88,27 +115,14 @@
       canvas = $('#canvas');
       editor_buttons = $('ul#editor');
       $('#buttons .button').on('click', function(event) {
-        var dom;
-        dom = $(event.target);
-        return _this.NerdScript.ui.new_object(dom, dom.attr('id'));
+        var button;
+        button = $(event.target);
+        return _this.NerdScript.ui.new_object(false, button.attr('id'));
       });
-      $('input').on('change', function(event) {
-        return _this.console.log('event');
-      });
-      $('#canvas').on('click', function(event) {
+      return $('#canvas').on('click', function(event) {
         if ($(event.target).attr('id') === 'canvas') {
           return $('#buttons #thing').click();
         }
-      });
-      $("input").keyup(function(event) {
-        if (event.keyCode === 13) {
-          $(this).trigger("enterKey");
-        }
-      });
-      return $("input").on("enterKey", function(event) {
-        var dom;
-        dom = $(event.target);
-        return _this.console.log(dom);
       });
     });
   }
