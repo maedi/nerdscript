@@ -48,3 +48,11 @@ input {
   padding: 10px;
   border-radius: 5px;
   box-shadow: 1px 1px 1px #cccccc; }
+  #dom-object .object-type.thing {
+    color: blue; }
+  #dom-object .object-type.config {
+    color: red; }
+  #dom-object .object-type.variable {
+    color: green; }
+  #dom-object .object-type.connection {
+    color: yellow; }
