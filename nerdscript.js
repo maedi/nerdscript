@@ -72,6 +72,7 @@
         type = false;
       }
       new_dom_object = $('#dom-object').clone();
+      $('input', new_dom_object).attr('placeholder', type);
       if (parent && parent.hasClass('thing')) {
         new_dom_object.appendTo(parent);
       } else if (parent) {

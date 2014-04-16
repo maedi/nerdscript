@@ -33,6 +33,7 @@ class UI
 
     # copy dom object
     new_dom_object = $('#dom-object').clone()
+    $('input', new_dom_object).attr('placeholder', type)
     
     # target dom object
     if parent and parent.hasClass('thing')

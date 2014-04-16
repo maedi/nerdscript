@@ -1,26 +1,56 @@
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
 body {
   margin: 0;
   padding: 0;
-  height: 100%; }
+  height: 100%;
+  font-family: "Arial"; }
 
 html,
 #editor,
 #canvas {
   height: 100%; }
 
+header {
+  height: 50px;
+  border-bottom: 1px solid #cccccc;
+  background: linear-gradient(to bottom, white 0%, #e5e5e5 100%); }
+  header a,
+  header a:link,
+  header a:visited {
+    float: right;
+    background: white;
+    padding: 0 15px;
+    font-weight: bold;
+    height: 100%;
+    line-height: 50px;
+    color: #333333;
+    border-left: 1px solid #dddddd; }
+
 #editor {
   width: 40%;
   float: left; }
   #editor ul#buttons {
+    overflow: auto;
     margin: 0;
+    margin-left: 2px;
+    padding: 0;
     list-style: none;
-    background: #9b9b9b; }
+    background: #f6f6f6;
+    border-bottom: 1px solid #dddddd; }
     #editor ul#buttons li {
-      display: inline-block;
-      padding: 7px 10px; }
+      float: left;
+      padding: 10px 12px;
+      margin: 0;
+      color: black;
+      text-shadow: 1px 1px 1px white;
+      border-right: 1px solid #dddddd; }
       #editor ul#buttons li:hover {
         cursor: pointer;
-        background: #dbdbdb; }
+        background: rgba(255, 255, 255, 0.4); }
   #editor #canvas:hover {
     cursor: text; }
 
@@ -35,12 +65,14 @@ html,
 input {
   display: block;
   width: 100%;
+  font-family: "Arial";
   font-size: 14px;
   box-shadow: none;
   border: none; }
   input:focus {
     outline: 0; }
   input:placeholder {
+    text-transform: capitalize !important;
     color: #999999 !important; }
   .thing > input {
     font-size: 16px; }
